@@ -1,0 +1,4 @@
+[workspace]
+members = [ "odpi_rs", "odpi_rs_procmacro" ]
+resolver = "2"
+

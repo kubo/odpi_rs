@@ -1,0 +1,21 @@
+[package]
+name = "odpi_rs_procmacro"
+version = "0.0.0-dev"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[features]
+tokio = ["is_async"]
+async-std = ["is_async"]
+smol = ["is_async"]
+is_async = []
+
+[dependencies]
+convert_case = "0.7.1"
+odpic-sys = { version = "=0.2.0", features = ["doc"] }
+proc-macro2 = "1"
+quote = "1"
+syn = { version = "2", features = ["full", "extra-traits"] }
+
