@@ -1,3 +1,17 @@
+// odpi_rs - a thin wrapper over Oracle Database Programming Interface for C
+//
+// URL: https://github.com/kubo/odpi_rs
+//
+//-----------------------------------------------------------------------------
+// Copyright (c) 2025 Kubo Takehiro <kubo@jiubao.org>. All rights reserved.
+// This program is free software: you can modify it and/or redistribute it
+// under the terms of:
+//
+// (i)  the Universal Permissive License v 1.0 or at your option, any
+//      later version (http://oss.oracle.com/licenses/upl); and/or
+//
+// (ii) the Apache License v 2.0. (http://www.apache.org/licenses/LICENSE-2.0)
+//-----------------------------------------------------------------------------
 use crate::stmt::Stmt;
 use crate::types::{
     IntervalDS, IntervalYM, Json, Lob, NativeType, Object, Rowid, Timestamp, Vector,
@@ -183,21 +197,6 @@ impl TryFrom<NativeValue<'_>> for Rowid {
                 "failed to convert to &str from {:?}",
                 value
             ))),
-        }
-    }
-}
-
-impl<'a, T> TryFrom<NativeValue<'a>> for Option<T>
-where
-    T: TryFrom<NativeValue<'a>, Error = Error>,
-{
-    type Error = Error;
-
-    fn try_from(value: NativeValue<'a>) -> Result<Option<T>> {
-        match <T as TryFrom<NativeValue<'a>>>::try_from(value) {
-            Ok(value) => Ok(Some(value)),
-            Err(Error::NullValue) => Ok(None),
-            Err(err) => Err(err),
         }
     }
 }

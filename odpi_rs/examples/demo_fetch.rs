@@ -43,7 +43,7 @@ const SQL_TEXT_2: &str = "select IntCol \
                           where rowid = :1";
 const BIND_NAME: &str = "intCol";
 
-#[odpi_rs::main(maybe_async)]
+#[odpi_rs::main]
 async fn main() -> Result<()> {
     // connect to database
     let conn = common::get_conn(true, None).await?;

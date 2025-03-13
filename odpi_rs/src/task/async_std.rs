@@ -1,6 +1,6 @@
-// Rust-oracle - Rust binding for Oracle database
+// odpi_rs - a thin wrapper over Oracle Database Programming Interface for C
 //
-// URL: https://github.com/kubo/rust-oracle
+// URL: https://github.com/kubo/odpi_rs
 //
 //-----------------------------------------------------------------------------
 // Copyright (c) 2025 Kubo Takehiro <kubo@jiubao.org>. All rights reserved.

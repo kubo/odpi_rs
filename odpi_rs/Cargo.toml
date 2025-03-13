@@ -4,14 +4,18 @@ version = "0.0.0-dev"
 edition = "2021"
 rust-version = "1.68.0"
 
+[package.metadata.docs.rs]
+features = ["is_async"]
+rustdoc-args = ["--cfg", "docsrs"]
+
 [features]
 tokio = ["dep:tokio", "is_async", "odpi_rs_procmacro/tokio"]
 async-std = ["dep:async-std", "is_async", "odpi_rs_procmacro/async-std"]
 smol = ["dep:smol", "is_async", "odpi_rs_procmacro/smol"]
 
-# Don't enable the following feature directly.
+# Don't enable the following feature directly except "cargo doc".
 # Use tokio, async-std or smol instead.
-is_async = []
+is_async = ["odpi_rs_procmacro/is_async"]
 
 [dependencies]
 bitflags = "2.8.0"
@@ -21,6 +25,6 @@ odpi_rs_procmacro = { path = "../odpi_rs_procmacro" }
 odpic-sys = { version = "=0.2.0", features = ["separate_blocking"] }
 thiserror = "2.0.11"
 
-tokio = { version = "1", features = ["rt"], optional = true }
+tokio = { version = "1", features = ["rt", "rt-multi-thread"], optional = true }
 async-std = { version = "1", optional = true }
 smol = { version = "2", optional = true }
